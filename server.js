@@ -6,6 +6,7 @@ const passport = require("passport");
 
 const users = require("./routes/api/users");
 const games = require("./routes/api/games");
+const hiScores = require("./routes/api/hiscores")
 
 const app = express();
 
@@ -49,13 +50,14 @@ require("./config/passport")(passport);
 
 // Routes - swtich status to 200 if problematic
 app.get("/ping", (reg, res) => res.sendStatus(200));
-app.post("/api/v1/hiscores", (req, res) => {
-  console.log("I'm hit")
-  res.json(req.body)
-})
+// app.post("/api/v1/hiscores", (req, res) => {
+//   console.log("I'm hit")
+//   res.json(req.body)
+// })
 
 app.use("/api/v1/users", users);
 app.use("/api/v1/games", games);
+app.use("/api/v1/hiscores", hiScores);
 
 
 // app.use("*", (req, res) =>
